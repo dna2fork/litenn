@@ -248,13 +248,13 @@ float hash_float_uint(uint v)
 float2 hash_float2_uint (uint v)
 {{
     uint2 q = hash_uint2_uint2( (uint2)(v, 1) );    
-    return (float2)(q.x, q.y) * UIF;
+    return (float2)(q.x, q.y) * (float)UIF;
 }}
 
 float3 hash_float3_uint (uint v)
 {{
     uint3 q = hash_uint3_uint3( (uint3)(v, 1, 1) );    
-    return (float3)(q.x, q.y, q.z) * UIF;
+    return (float3)(q.x, q.y, q.z) * (float)UIF;
 }}
 
 //---------- Classic hashes used in shaders
@@ -262,7 +262,7 @@ float3 hash_float3_uint (uint v)
 float hash_float_float(float p)
 {{
     
-    float x = sin(p*12.9898)*43758.5453;
+    float x = sin((float)(p*12.9898))*43758.5453;
     return x - floor(x);
 }}
 
